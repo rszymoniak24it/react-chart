@@ -1,0 +1,39 @@
+.app {
+  display: flex;
+  flex-direction: row;
+  max-width: 1440px;
+  margin: 0 auto;
+
+  @media (min-width: 768px) {
+    flex-direction: column;
+  }
+}
+
+.mainContent {
+  flex: 1;
+  padding: 4rem 1rem 1rem 1rem;
+
+    @media (min-width: 768px) {
+        padding: 1rem;  
+    }
+}
+
+.hamburger {
+  display: none;
+  font-size: 2rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  z-index: 1000;
+  background: #ddd;
+  border-radius: 8px;
+}
+
+@media (max-width: 767px) {
+  .hamburger {
+    display: block;
+  }
+}
