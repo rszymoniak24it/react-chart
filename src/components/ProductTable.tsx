@@ -1,9 +1,9 @@
-
 import { useState, useCallback, useMemo } from "react";
 import { useProducts } from "../context/ProductContext";
 import { searchProducts, sortProducts } from "../utils/filters";
 import Pagination from "./Pagination";
-import styles from "../styles/ProductTable.module.scss";
+import ProductTableSearch from "./ProductTableSearch";
+import ProductTableTable from "./ProductTableTable";
 
 export default function ProductTable() {
   const { filtered, loading, error, search, setSearch } = useProducts();
@@ -28,47 +28,20 @@ export default function ProductTable() {
 
   return (
     <div>
-      <div className={styles.tableWrapper}>
-        <input
-          className={styles.searchInput}
-          placeholder="Wyszukaj..."
-          value={localSearch}
-          onChange={e => {
-            setLocalSearch(e.target.value);
-            setPage(1);
-          }}
-        />
-        <button className={styles.updateButton} onClick={handleUpdateChart}>
-          Aktualizuj wykres
-        </button>
-      </div>
-      <table className={styles.productTable}>
-        <thead>
-          <tr>
-            <th onClick={() => handleSort("title")}>
-              Nazwa
-              {sortKey === "title" && (sortDirection === "asc" ? " ▲" : " ▼")}
-            </th>
-            <th onClick={() => handleSort("price")}>
-              Cena
-              {sortKey === "price" && (sortDirection === "asc" ? " ▲" : " ▼")}
-            </th>
-            <th onClick={() => handleSort("stock")}>
-              Stan magazynowy
-              {sortKey === "stock" && (sortDirection === "asc" ? " ▲" : " ▼")}
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          {paginated.map((p) => (
-            <tr key={p.id}>
-              <td>{p.title}</td>
-              <td>${p.price}</td>
-              <td>{p.stock}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+      <ProductTableSearch
+        value={localSearch}
+        onChange={val => {
+          setLocalSearch(val);
+          setPage(1);
+        }}
+        onUpdate={handleUpdateChart}
+      />
+      <ProductTableTable
+        products={paginated}
+        sortKey={sortKey}
+        sortDirection={sortDirection}
+        onSort={handleSort}
+      />
       <Pagination
         page={page}
         totalItems={sorted.length}

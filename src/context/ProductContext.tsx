@@ -18,3 +18,4 @@ export const useProducts = () => {
   if (!ctx) throw new Error("useProducts must be used within ProductProvider");
   return ctx;
 };
+

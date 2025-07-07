@@ -2,11 +2,11 @@ import React from "react";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 
-jest.mock("../context/ProductProvider", () => ({
+jest.mock("../context/ProductContext", () => ({
   useProducts: jest.fn(),
 }));
 
-import { useProducts } from "../context/ProductProvider";
+import { useProducts } from "../context/ProductContext";
 import ProductTable from "../components/ProductTable";
 
 describe("ProductTable", () => {
