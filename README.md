@@ -28,6 +28,8 @@ src/
     Pagination.tsx
     ProductFilter.tsx
     ProductTable.tsx
+    ProductTableSearch.tsx
+    ProductTableTable.tsx
     SalesChart.tsx
     Sidebar.tsx
   context/               # React context and providers
@@ -54,6 +56,8 @@ src/
 - **Component-Based UI:**  
   All UI elements are built as reusable React components in [`src/components/`](src/components/).  
   - [`ProductTable`](src/components/ProductTable.tsx): Displays products with sorting, searching, and pagination.
+  - [`ProductTableSearch`](src/components/ProductTableSearch.tsx): Search bar and update button for filtering products and updating the chart.
+  - [`ProductTableTable`](src/components/ProductTableTable.tsx): Renders the product table with sorting.
   - [`ProductFilter`](src/components/ProductFilter.tsx): Allows filtering products by price range.
   - [`SalesChart`](src/components/SalesChart.tsx): Visualizes stock levels and averages using Chart.js.
   - [`Sidebar`](src/components/Sidebar.tsx): Responsive sidebar for navigation and filters.
